@@ -6,41 +6,46 @@ import java.util.List;
 public class BinarySearchTree {
     private Node root;
 
-    public BinarySearchTree(int key) {
-        this.root = new Node(key);
-    }
-
-    public Node find(int key){
-        return this.root.find(key);
-    }
 
     public static BinarySearchTree build(List<Integer> elements) {
-        // TODO construct a binary search tree here
+        BinarySearchTree binarySearchTree = new BinarySearchTree();
         for (Integer key: elements) {
-            BinarySearchTree.add(key);
+            binarySearchTree.add(key);
 
         }
-        return BinarySearchTree
+        return binarySearchTree;
     }
 
     public boolean search(Integer toFind) {
-        // TODO return true if the element has been found, false if its not in the tree.
-        return false;
-    }
-
-    public static void add(Integer toAdd) {
-        Node n = this.find(toAdd);
-        if (toAdd < n.toAdd) {
-            n.left = new Node(toAdd);
-            n.left.p = n;
-        }
-        else if (toAdd > n.toAdd) {
-            n.right = new Node(toAdd);
-            n.right.p = n;
+        if (root == null){
+            return false;
+        } else {
+            return root.search(toFind);
         }
     }
 
+
+    public void add(Integer toAdd) {
+        root = addRecursive(root, toAdd);
     }
+
+    private Node addRecursive(Node current, int value) {
+        if (current == null) {
+            return new Node(value);
+        }
+
+        if (value < current.toAdd) {
+            current.left = addRecursive(current.left, value);
+        } else if (value > current.toAdd) {
+            current.right = addRecursive(current.right, value);
+        } else {
+            // value already exists
+            return current;
+        }
+
+        return current;
+    }
+
 
     public void remove(Integer toRemove) {
         // TODO removes an element. Throws an error if its not on the tree.
