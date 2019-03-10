@@ -1,44 +1,35 @@
 package com.codecool.javabst;
 
 public class Node {
-    public Integer toAdd;
+    public Integer key;
     public Node right, left;
 
     public Node(Integer key) {
-        this.toAdd = key;
+        this.key = key;
         right = null;
         left = null;
     }
 
     public boolean search(int value) {
 
-        if (value == this.toAdd)
-
+        if (value == this.key) {
             return true;
+        } else if (value < this.key) {
 
-        else if (value < this.toAdd) {
-
-            if (left == null)
-
+            if (left == null) {
                 return false;
-
-            else
-
+            } else {
                 return left.search(value);
-
+            }
         } else {
-
-            if (right == null)
-
+            if (right == null) {
                 return false;
-
-            else
-
+            } else {
                 return right.search(value);
-
+            }
         }
 
 
     }
-
 }
+

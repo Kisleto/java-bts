@@ -20,6 +20,7 @@ public class Main {
         System.out.println(myTree.search(7)); // should be true
         System.out.println(myTree.search(55)); // should be true
         System.out.println(myTree.search(34535)); // should be false
+        myTree.remove(7);
 
 
         System.out.println("done");
